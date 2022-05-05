@@ -22,6 +22,7 @@ public class Cihaz {
     Long id;
     String marka;
     String model;
+    String cinsi;
     String alinantarih;
     String garantibitis;
 

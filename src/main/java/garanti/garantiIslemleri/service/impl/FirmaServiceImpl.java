@@ -19,6 +19,7 @@ public class FirmaServiceImpl implements FirmaService {
     @Override
     public Firma save(Firma firma) {
         return firmaRepository.save(firma);
+
     }
 
     @Override
@@ -29,6 +30,14 @@ public class FirmaServiceImpl implements FirmaService {
     @Override
     public void delete(Long id) {
         firmaRepository.deleteById(id);
+//        try {
+//            Optional<Firma> item = firmaRepository.findById(id);
+//            if (item.isPresent())
+//            firmaRepository.delete(item.get());
+//            return true;
+//        }catch (Exception exception){
+//            return false;
+//        }
 
     }
 

@@ -55,4 +55,8 @@ public class UserController {
     public ResponseEntity<List<User>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }
+
+
+
+
 }

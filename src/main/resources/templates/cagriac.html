@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags-->
@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>ÇAĞRI FORMU</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -27,25 +27,35 @@
 </head>
 
 <body>
+
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
                     <h2 class="title">ÇAĞRI FORMU</h2>
                 </div>
+
                 <div class="card-body">
-                    <form method="POST">
+
+                    <form method="POST"
+                          action="/cagriac"
+                          role="form"
+                          class="form"
+                    >
                         <!-- çağrı açan kişi bilgileri-->
-                        <div class="form-row">
+                        <div  class="form-row">
                             <div class="name">Çağrı Açan Kişi</div>
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="kisi_select">
                                             <option disabled="disabled" selected="selected">Kişi Seçiniz</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
+                                            <option th:each="ls: ${kisilistesi}"
+                                                    th:value="${ls.id}">
+                                                <label  th:text="${ls.name}"/>
+                                                <label  th:text="${ls.lastname}"/>
+                                                    </option>
+
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -59,11 +69,15 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="firma_select">
                                             <option disabled="disabled" selected="selected">Firma Seçiniz</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
+                                            <option th:each="ls: ${firmalistesi}"
+                                                    th:value="${ls.id}">
+                                                <label th:text="${ls.name}"/>
+
+
+                                                </option>
+
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -76,7 +90,7 @@
                             <div class="name">Arızayı Tanımlayınız</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
+                                    <input class="input--style-5" type="text" name="arizatanimi">
                                 </div>
                             </div>
                         </div>
@@ -86,11 +100,11 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="marka_select">
                                             <option disabled="disabled" selected="selected">Marka Seçiniz</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
+                                            <option value="1">Dell</option>
+                                            <option value="2">HP</option>
+                                            <option value="3">Asus</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -103,11 +117,11 @@
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
+                                        <select name="model_select">
                                             <option disabled="disabled" selected="selected">Model Seçiniz</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
+                                            <option value="1">7920</option>
+                                            <option value="2">Z1 G1</option>
+                                            <option value="3">Asus X515JF </option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -120,12 +134,12 @@
                             <div class="value">
                                 <div class="input-group">
                                     
-                                    <input class="input--style-5" type="text" name="company" >
+                                    <input class="input--style-5" type="text" name="serinumarasi" >
                                 </div>
                             </div>
                         </div>
                         <!-- tarih suan yok -->
-
+                <!-- BU kısmı tarih alanı için ayırdım
                         <div class="form-row">
                             <div class="name">Subject</div>
                             <div class="value">
@@ -141,12 +155,32 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div> -->
                         <div>
-                            <button class="btn btn--radius-2 btn--red" type="submit">Çağrıyı Aç</button>
+
+
+
                         </div>
+                        <div>  <div>
+                        </div>
+                        </div>
+
+
+
+
+
+                        <input type="submit" value="Formu Kaydet"   class="btn btn--radius-2 btn--red"
+                               onclick="butonfonksiyonu()"    >
+
+
                     </form>
+
+
+                </div>
+                <div>
+                    <button class="btn btn-outline-danger" type="submit" > <a
+                            href="/index"/>Anasayfaya Dön</button>
+
                 </div>
             </div>
         </div>
@@ -161,6 +195,16 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+    <script>
+
+        function butonfonksiyonu(){
+            alert("ÇAĞRI AÇILDI");
+        }
+
+
+
+    </script>
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

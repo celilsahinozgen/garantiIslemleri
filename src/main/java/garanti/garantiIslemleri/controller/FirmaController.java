@@ -5,6 +5,7 @@ import garanti.garantiIslemleri.service.FirmaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,8 +32,10 @@ public class FirmaController {
         firmaService.update(firma);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+
+
         try {
             firmaService.delete(id);
            return ResponseEntity.noContent().build();
@@ -54,4 +57,14 @@ public class FirmaController {
     public ResponseEntity<List<Firma>> findAll(){
         return ResponseEntity.ok(firmaService.findAll());
     }
+
+    @GetMapping("")
+    public ModelAndView firmaeklePage(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("firmaekle");
+        return model;
+    }
+
+
+
 }
