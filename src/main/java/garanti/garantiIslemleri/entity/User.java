@@ -20,6 +20,7 @@ public class User {
 
     String name;
     String lastname;
+    String eposta;
     String iletisim;
 
 

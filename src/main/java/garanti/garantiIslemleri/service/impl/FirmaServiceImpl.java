@@ -28,16 +28,16 @@ public class FirmaServiceImpl implements FirmaService {
     }
 
     @Override
-    public void delete(Long id) {
-        firmaRepository.deleteById(id);
-//        try {
-//            Optional<Firma> item = firmaRepository.findById(id);
-//            if (item.isPresent())
-//            firmaRepository.delete(item.get());
-//            return true;
-//        }catch (Exception exception){
-//            return false;
-//        }
+    public boolean delete(Long id) {
+
+       try {
+           Optional<Firma> _firma = firmaRepository.findById(id);
+           if (_firma.isPresent())
+               firmaRepository.delete(_firma.get());
+           return true;
+       }catch (Exception exception){
+           return false;
+       }
 
     }
 

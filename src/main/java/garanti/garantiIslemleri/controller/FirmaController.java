@@ -32,17 +32,17 @@ public class FirmaController {
         firmaService.update(firma);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-
-
-        try {
-            firmaService.delete(id);
-           return ResponseEntity.noContent().build();
-        }catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @DeleteMapping("{id}")
+//    public ResponseEntity<Void> delete(@PathVariable Long id) {
+//
+//
+//        try {
+//            firmaService.delete(id);
+//           return ResponseEntity.noContent().build();
+//        }catch (RuntimeException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
     @GetMapping("/findbyid/{id}")
     public ResponseEntity<Firma> findById(@PathVariable Long id){
         Optional<Firma> optionalFirma;
@@ -64,6 +64,8 @@ public class FirmaController {
         model.setViewName("firmaekle");
         return model;
     }
+
+
 
 
 

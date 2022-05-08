@@ -53,17 +53,19 @@
                         <td th:utext="${firmabilgilerilistesi.telefon}"></td>
                         <!--Firma sorumlu -->
                         <td th:utext="${firmabilgilerilistesi.sorumlu}"></td>
-<!--                        <td > <a class="btn btn-app bg-secondary">-->
-<!--                            <i class="fas fa-edit"> düzenle</i>-->
-<!--                        </a>-->
-<!--                            <a th:href="${'/firma/{firmabilgilerilistesi.id}'}"-->
-<!--                                    class="btn btn-app bg-danger">-->
-<!--                                <i class="fas fa-eraser"> sil</i>-->
-<!--                            </a>-->
-<!--                            <input  th:href="${'/firma/{firmabilgilerilistesi.id}'}"-->
-<!--                                    type="submit" value="Formu Kaydet" href="index"  onclick="butonfonksiyonu()">-->
+                        <td >
 
-<!--                        </td>-->
+                            <a  th:href="firmaekle">
+                                <button type="button" class="btn btn-block btn-outline-primary btn-xs">DÜZENLE</button>
+                            </a>
+
+                        </td>
+                        <!--Sil Butonu primary -->
+                        <td >
+                            <a th:href="${'firmabilgileri/delete?id='+firmabilgilerilistesi.id}" >
+                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">KİŞİYİ SİL</button>
+                            </a>
+                        </td>
 
 
 

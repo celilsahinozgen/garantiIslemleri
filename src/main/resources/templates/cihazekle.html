@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firma ekleme</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">FİRMA EKLEME BOLUMUDUR</h3>
+    </div>
+
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="firmaeklemeid" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th >FİRMA İSMİ</th>
+                <th>CİHAZIN CİNSİ</th>
+                <th>MARKA</th>
+                <th>MODEL</th>
+                <th>ALIM TARİHİ</th>
+                <th>GARANTİ BİTİŞ TARİHİ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div >
+                <form id="login-nav"
+                      method="post"
+                      role="form"
+                      action="/cihazekle"
+                      class="form"
+
+                >
+                    <div >
+                        <div>
+                        <tr>
+                            <!-- FİRMA İSMİ -->
+                            <td  >
+
+
+                                <div class="value">
+                                    <div class="input-group"
+                                         >
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="firma_select">
+                                                <option disabled="disabled" selected="selected">Firma Seçin</option>
+                                                <option th:each="firmals: ${firmabilgileri}"
+                                                        th:value="${firmals.id}">
+                                                    <label  th:text="${firmals.name}"/>
+
+                                                </option>
+
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        <td >
+                            <div class="form-group">
+                                <label class="sr-only">sorumlu</label>
+                                <input type="text" id="reg_cihazcinsi" name="cihazcinsi" class="form-control" value="" placeholder="CİHAZ CİNSİ" required>
+                            </div></td>
+
+
+                        <!--  MARKA-->
+                        <td >
+                            <div class="form-group">
+                                <label class="sr-only">sorumlu</label>
+                                <input type="text" id="reg_cihazmarka" name="cihazmarka" class="form-control" value="" placeholder="CİHAZ MARKASI" required>
+                            </div></td>
+
+
+                        <!--MODEL -->
+                        <td >
+                            <div class="form-group">
+                                <label class="sr-only">sorumlu</label>
+                                <input type="text" id="reg_cihazmodel" name="cihazmodel" class="form-control" value="" placeholder="CİHAZ MODEL" required>
+                            </div></td>
+
+
+                        <!--ALIM TARİHİ -->
+                        <td >
+                            <div class="form-group">
+                                <label class="sr-only">sorumlu</label>
+                                <input type="text" id="reg_cihazalimtarihi" name="cihazalimtarihi" class="form-control" value="" placeholder="ALIM TARİHİ" required>
+                            </div></td>
+
+
+
+                        <td >
+                            <div class="form-group">
+                                <label class="sr-only">sorumlu</label>
+                                <input type="text" id="reg_garantibitis" name="garantibitis" class="form-control" value="" placeholder="GARANTİ BİTİŞ TARİHİ" required>
+                            </div></td>
+
+
+
+                        </td>
+
+                        </tr>
+
+
+                    <div >
+                        <p><a href="index" class="btn btn-primary"  >Anasayfaya Dön</a></p>
+
+                    </div>
+
+                        <input type="submit" value="Cihazları Kaydet" href="index"  onclick="butonfonksiyonu()">
+                    </div>
+
+                </form
+                >
+            </div>
+            </tbody>
+        </table>
+            </div>
+
+
+
+
+
+    </div>
+
+    <!-- kaydet eklenecek -->
+</div>
+
+
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
+
+
+<script>
+
+    function butonfonksiyonu(){
+        alert("CİHAZ EKLENDİ...!!!");
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -9,7 +9,7 @@ public interface FirmaService {
 
     Firma save(Firma firma);
     Firma update(Firma firma);
-    void delete(Long id);
+    boolean delete(Long id);
     Optional<Firma> findById(Long id);
     List<Firma> findAll();
 }

@@ -17,7 +17,7 @@ public class CihazController {
 
     private final CihazService cihazService;
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Cihaz> save(@RequestBody Cihaz cihaz) {
         if (cihaz.getId() != null) {
             ResponseEntity.badRequest().build();
@@ -26,7 +26,7 @@ public class CihazController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<Cihaz> update(@RequestBody Cihaz cihaz){
         if (cihaz.getId() == null) {
             ResponseEntity.badRequest().build();
@@ -34,7 +34,7 @@ public class CihazController {
         cihazService.update(cihaz);
         return ResponseEntity.ok().build();
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping({"id"})
     public ResponseEntity<Void> delete (@PathVariable Long id){
         try {
             cihazService.delete(id);
@@ -43,7 +43,7 @@ public class CihazController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/findbyid/{id}")
+    @GetMapping({"id"})
     public ResponseEntity<Cihaz> findById(@PathVariable Long id){
         Optional<Cihaz> optionalCihaz;
        try {
@@ -53,7 +53,7 @@ public class CihazController {
        }
        return ResponseEntity.ok(optionalCihaz.get());
     }
-    @GetMapping("/findall")
+    @GetMapping
     public ResponseEntity<List<Cihaz>> findAll() {
         return ResponseEntity.ok(cihazService.findAll());
     }

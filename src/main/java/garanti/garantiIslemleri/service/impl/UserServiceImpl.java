@@ -26,8 +26,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long id) {
-        userRepository.deleteById(id);
+    public boolean delete(Long id) {
+        try {
+            Optional<User> item=    userRepository.findById(id);
+            if (item.isPresent())
+                userRepository.delete(item.get());
+            return true;
+        }catch (Exception exception) {
+            return false;
+        }
 
     }
 

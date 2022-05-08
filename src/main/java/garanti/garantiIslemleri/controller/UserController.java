@@ -32,15 +32,15 @@ public class UserController {
         return ResponseEntity.ok(userService.update(user));
 
     }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        try {
-            userService.delete(id);
-            return ResponseEntity.noContent().build();
-        }catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Void> delete(@PathVariable Long id) {
+//        try {
+//            userService.delete(id);
+//            return ResponseEntity.noContent().build();
+//        }catch (RuntimeException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
     @GetMapping("/findbyid/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
         Optional<User> optionalUser;

@@ -12,12 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequiredArgsConstructor
 public class HomePageController {
 
-    private final UserService userService;
+
 
     @GetMapping
     public ModelAndView index(){
         ModelAndView model = new ModelAndView();
-        model.addObject("kisilistesi",userService.findAll());
+
         model.setViewName("index");
 
         return model;
